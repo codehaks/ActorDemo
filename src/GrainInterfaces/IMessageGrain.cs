@@ -8,7 +8,7 @@ namespace GrainInterfaces
 {
     public interface IMessageGrain : Orleans.IGrainWithStringKey
     {
-        Task<string> Send(string greeting);
-        Task<List<string>> GetHistory();
+        Task Send(MessageModel model);
+        Task<List<MessageModel>> GetHistory();
     }
 }

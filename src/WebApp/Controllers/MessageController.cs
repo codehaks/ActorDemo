@@ -18,11 +18,16 @@ namespace WebApp.Controllers
             this.clusterClient = clusterClient;
         }
         [Route("api/message/{userId}/{body}")]
-        public async Task<IActionResult> Get(string userId,string body)
+        public async Task<IActionResult> Get(string userId, string body)
         {
             var g = clusterClient.GetGrain<IMessageGrain>(userId);
-            var result=await g.Send(body);
-            return Ok(result);
+
+            await g.Send(new MessageModel
+            {
+                Body = body,
+                UserName = userId
+            });
+            return Ok("Message sent!");
 
         }
 

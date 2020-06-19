@@ -12,22 +12,26 @@ namespace Grains
     public class HelloGrain : Orleans.Grain, IMessageGrain
     {
         private readonly ILogger logger;
-        private readonly List<string> _messageList;
+        private readonly List<MessageModel> _messageList;
 
         public HelloGrain(ILogger<HelloGrain> logger)
         {
             this.logger = logger;
-            _messageList = new List<string>();
+            _messageList = new List<MessageModel>();
         }
 
-        Task<string> IMessageGrain.Send(string greeting)
+        Task IMessageGrain.Send(MessageModel greeting)
         {
-            logger.LogInformation($"\n SayHello message received: greeting = '{greeting}'");
+            greeting.TimeCreated = DateTime.Now;
+
+            logger.LogInformation($"\n message received from {greeting.UserName}: '{greeting.Body}' at {greeting.TimeCreated.ToShortTimeString()}");
+            
+
             _messageList.Add(greeting);
-            return Task.FromResult($"\n {this.GetPrimaryKey()} said: '{greeting}', so HelloGrain says: "+greeting.Reverse().ToString());
+            return Task.CompletedTask;
         }
 
-        Task<List<string>> IMessageGrain.GetHistory()
+        Task<List<MessageModel>> IMessageGrain.GetHistory()
         {
             return Task.FromResult(_messageList);
         }
