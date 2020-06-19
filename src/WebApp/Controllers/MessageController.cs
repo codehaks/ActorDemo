@@ -18,19 +18,19 @@ namespace WebApp.Controllers
             this.clusterClient = clusterClient;
         }
         [Route("api/message/{userId}/{body}")]
-        public async Task<IActionResult> Get(int userId,string body)
+        public async Task<IActionResult> Get(string userId,string body)
         {
-            var g = clusterClient.GetGrain<IHello>(userId);
-            var result=await g.SayHello(body);
+            var g = clusterClient.GetGrain<IMessageGrain>(userId);
+            var result=await g.Send(body);
             return Ok(result);
 
         }
 
         [Route("api/messages/{userId}")]
-        public async Task<IActionResult> GetMessages(int userId)
+        public async Task<IActionResult> GetMessages(string userId)
         {
-            var g = clusterClient.GetGrain<IHello>(userId);
-            var result = await g.GetMessages();
+            var g = clusterClient.GetGrain<IMessageGrain>(userId);
+            var result = await g.GetHistory();
             return Ok(result);
 
         }

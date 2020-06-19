@@ -57,8 +57,8 @@ namespace Client
         private static async Task DoClientWork(IClusterClient client)
         {
             // example of calling grains from the initialized client
-            var friend = client.GetGrain<IHello>(0);
-            var response = await friend.SayHello("Good morning, HelloGrain!");
+            var friend = client.GetGrain<IMessageGrain>(0);
+            var response = await friend.Send("Good morning, HelloGrain!");
             Console.WriteLine("\n\n{0}\n\n", response);
         }
     }

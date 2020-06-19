@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GrainInterfaces
 {
-    public interface IHello : Orleans.IGrainWithIntegerKey
+    public interface IMessageGrain : Orleans.IGrainWithStringKey
     {
-        Task<string> SayHello(string greeting);
-        Task<List<string>> GetMessages();
+        Task<string> Send(string greeting);
+        Task<List<string>> GetHistory();
     }
 }
