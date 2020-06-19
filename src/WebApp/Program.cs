@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Orleans;
+using Orleans.Hosting;
 
 namespace WebApp
 {
@@ -21,6 +23,9 @@ namespace WebApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).UseOrleans(siloBuilder =>
+                {
+                    siloBuilder.UseLocalhostClustering();
                 });
     }
 }
