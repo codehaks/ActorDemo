@@ -40,5 +40,25 @@ namespace WebApp.Controllers
             return Ok(result);
 
         }
+
+        [Route("api/status/{userId}/{body}")]
+        public async Task<IActionResult> SetStatus(string userId, string body)
+        {
+            var g = clusterClient.GetGrain<IStatusGrain>(userId);
+
+
+            await g.SetStatus(body);
+            return Ok($"{userId} : {body}");
+
+        }
+
+        [Route("api/status/{userId}")]
+        public async Task<IActionResult> GetStatus(string userId)
+        {
+            var g = clusterClient.GetGrain<IStatusGrain>(userId);
+            var status=await g.GetStatus();
+            return Ok($"{userId} : {status} (From Grain)");
+
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GrainInterfaces
 {
+    [Serializable]
     public class MessageModel
     {
         public string UserName { get; set; }
