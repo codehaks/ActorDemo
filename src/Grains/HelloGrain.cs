@@ -23,7 +23,7 @@ namespace Grains
         Task IMessageGrain.Send(MessageModel greeting)
         {
             greeting.TimeCreated = DateTime.Now;
-
+            
             logger.LogInformation($"\n message received from {greeting.UserName}: '{greeting.Body}' at {greeting.TimeCreated.ToShortTimeString()}");
             
 

@@ -21,6 +21,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Get(string userId, string body)
         {
             var g = clusterClient.GetGrain<IMessageGrain>(userId);
+            
 
             await g.Send(new MessageModel
             {
