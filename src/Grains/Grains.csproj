@@ -11,6 +11,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Orleans.OrleansSqlUtils" Version="2.4.5" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.AdoNet" Version="3.2.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
