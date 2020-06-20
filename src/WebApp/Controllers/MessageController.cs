@@ -57,7 +57,7 @@ namespace WebApp.Controllers
         {
             var g = clusterClient.GetGrain<IStatusGrain>(userId);
             var status=await g.GetStatus();
-            return Ok($"{userId} : {status} (From Grain)");
+            return Ok($"{userId} : {status.Name} (From Grain)");
 
         }
     }

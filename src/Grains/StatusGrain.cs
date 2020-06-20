@@ -1,4 +1,6 @@
 ﻿using GrainInterfaces;
+using Orleans.Providers;
+using Orleans.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace Grains
 {
-    class StatusGrain : Orleans.Grain, IStatusGrain
+    [StorageProvider(ProviderName = "statusStore")]
+    class StatusGrain : Orleans.Grain<StatusModel>, IStatusGrain
     {
-        public string Status { get; set; }
-
-        public Task<string> GetStatus()
+        public Task<StatusModel> GetStatus()
         {
-            return Task.FromResult(Status);
+            return Task.FromResult(State);
         }
 
-        public Task SetStatus(string status)
+        public async Task SetStatus(string status)
         {
-            Status = status;
-            return Task.CompletedTask;
+            State = new StatusModel
+            {
+                Name = status
+            };
+            await base.WriteStateAsync();
         }
     }
 }

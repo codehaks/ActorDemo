@@ -8,6 +8,6 @@ namespace GrainInterfaces
     public interface IStatusGrain:Orleans.IGrainWithStringKey
     {
         Task SetStatus(string status);
-        Task<string> GetStatus();
+        Task<StatusModel> GetStatus();
     }
 }
