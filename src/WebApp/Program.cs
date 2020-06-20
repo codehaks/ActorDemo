@@ -25,11 +25,12 @@ namespace WebApp
                     webBuilder.UseStartup<Startup>();
                 }).UseOrleans(siloBuilder =>
                 {
-                    siloBuilder.UseLocalhostClustering()
+                    siloBuilder
+                    .UseLocalhostClustering()
                     .AddAdoNetGrainStorage("messageStore", options =>
                     {
                         options.Invariant = "System.Data.SqlClient";
-                        options.ConnectionString = @"Data Source=localhost\\sqlexpress;Initial Catalog=myblogdb;Integrated Security=True";
+                        options.ConnectionString = @"Data Source=localhost\sqlexpress;Initial Catalog=OrleansDemo;Integrated Security=True";
                         options.UseJsonFormat = true;
                     });
                 });
