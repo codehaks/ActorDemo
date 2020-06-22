@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.36
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "src\WebApp\WebApp.csproj", "{F39EA266-84CA-488A-B799-B118734C2D88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\WebApp\WebApp.csproj", "{F39EA266-84CA-488A-B799-B118734C2D88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grains", "src\Grains\Grains.csproj", "{4056C861-6C3F-4517-BC0A-BDF73DAC9CF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grains", "src\Grains\Grains.csproj", "{4056C861-6C3F-4517-BC0A-BDF73DAC9CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrainInterfaces", "src\GrainInterfaces\GrainInterfaces.csproj", "{4D45A8EC-AA63-45C8-9015-7FB0B3C5C28E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrainInterfaces", "src\GrainInterfaces\GrainInterfaces.csproj", "{4D45A8EC-AA63-45C8-9015-7FB0B3C5C28E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiloServer", "src\SiloServer\SiloServer.csproj", "{D4A42817-6956-412E-A301-CC9CE86B3F46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiloServer", "src\SiloServer\SiloServer.csproj", "{D4A42817-6956-412E-A301-CC9CE86B3F46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "src\Client\Client.csproj", "{74878A4F-1726-4A08-8C4A-FAD31349831E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "src\Client\Client.csproj", "{74878A4F-1726-4A08-8C4A-FAD31349831E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempSimApp", "TempSimApp\TempSimApp.csproj", "{C5DB638A-AFDB-4FA9-9812-635D42DF5973}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{74878A4F-1726-4A08-8C4A-FAD31349831E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74878A4F-1726-4A08-8C4A-FAD31349831E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74878A4F-1726-4A08-8C4A-FAD31349831E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DB638A-AFDB-4FA9-9812-635D42DF5973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DB638A-AFDB-4FA9-9812-635D42DF5973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DB638A-AFDB-4FA9-9812-635D42DF5973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DB638A-AFDB-4FA9-9812-635D42DF5973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

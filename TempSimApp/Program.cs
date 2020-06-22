@@ -1,0 +1,24 @@
+﻿using System;
+using System.Net.Http;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace TempSimApp
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            var client = new HttpClient();
+
+            for (int i = 1; i < 1001; i++)
+            {
+                var payload = Newtonsoft.Json.JsonConvert.SerializeObject(new SensorViewModel { SendorId = i, Temprature = 25 });
+                var content  = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
+
+                await client.PostAsync("http://localhost:5000/api/sensor", content);
+            }
+        }
+    }
+}

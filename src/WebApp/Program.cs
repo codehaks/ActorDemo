@@ -38,6 +38,12 @@ namespace WebApp
                           options.Invariant = "System.Data.SqlClient";
                           options.ConnectionString = @"Data Source=localhost\sqlexpress;Initial Catalog=OrleansDemo;Integrated Security=True";
                           options.UseJsonFormat = true;
+                      })
+                      .AddAdoNetGrainStorage("sensorStore", options =>
+                      {
+                          options.Invariant = "System.Data.SqlClient";
+                          options.ConnectionString = @"Data Source=localhost\sqlexpress;Initial Catalog=OrleansDemo;Integrated Security=True";
+                          options.UseJsonFormat = true;
                       });
                 });
     }
