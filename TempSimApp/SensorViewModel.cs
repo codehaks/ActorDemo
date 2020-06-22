@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace TempSimApp
 {
+    [Serializable]
     public class SensorViewModel
     {
         public int SendorId { get; set; }

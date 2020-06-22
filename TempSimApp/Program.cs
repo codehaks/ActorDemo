@@ -12,13 +12,19 @@ namespace TempSimApp
             Console.WriteLine("Hello World!");
             var client = new HttpClient();
 
-            for (int i = 1; i < 1001; i++)
+            for (int i = 1; i < 101; i++)
             {
                 var temp = new Random().Next(20, 30);
-                var payload = Newtonsoft.Json.JsonConvert.SerializeObject(new SensorViewModel { SendorId = i, Temprature = temp });
-                var content  = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
+                var payload = Newtonsoft.Json.JsonConvert
+                    .SerializeObject(new SensorViewModel
+                    {
+                        SendorId = i,
+                        Temprature = temp
+                    });
 
-                await client.PostAsync("http://localhost:5000/api/sensor", content);
+                var content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
+
+                await client.PostAsync("https://localhost:5001/api/sensor", content);
             }
         }
     }
