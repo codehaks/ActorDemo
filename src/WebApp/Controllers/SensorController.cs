@@ -23,7 +23,7 @@ namespace WebApp.Controllers
         [Route("api/sensor")]
         public async Task<IActionResult> Post(SensorViewModel model)
         {
-            var sensor = clusterClient.GetGrain<SensorGrain>(model.SendorId);
+            var sensor = clusterClient.GetGrain<ISensorGrain>(model.SendorId);
             await sensor.SetTemprature(new SensorModel
             {
                 Temprature = model.Temprature
@@ -37,7 +37,7 @@ namespace WebApp.Controllers
         [Route("api/sensor/{sensorId}")]
         public async Task<IActionResult> Get(int sensorId)
         {
-            var sensor = clusterClient.GetGrain<SensorGrain>(sensorId);
+            var sensor = clusterClient.GetGrain<ISensorGrain>(sensorId);
             var temp = await sensor.GetTemprature();
             return Ok(temp);
 
