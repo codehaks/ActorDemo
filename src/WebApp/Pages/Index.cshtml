@@ -7,10 +7,67 @@
 <h1>Dashboard</h1>
 <hr />
 
+<div id="app">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SensorId</th>
+                <th>Temp.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in sensors">
+                <td>{{item.id}}</td>
+                <td>{{item.temprature}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 @section scripts{
     <script src="~/lib/vue/vue.js"></script>
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                sensors: [],
+                connection: null
+            },
+            mounted: function () {
+                var vm = this;
 
+                for (var i = 1; i < 101; i++) {
+                    var model = {
+                        id: i,
+                        temprature: 0
+                    };
+
+                    vm.sensors.push(model);
+                }
+
+                vm.connection = new signalR.HubConnectionBuilder()
+                    .withUrl('/notifyHub')
+                    .configureLogging(signalR.LogLevel.Information)
+                    .build();
+
+                vm.connection.start()
+                    .catch(function (err) {
+                        return console.error(err.toSting());
+                    });
+
+                vm.connection.on('sendSensorData', function (id, temprature) {
+
+                    var sensorIndex = _.findIndex(vm.sensors, function (o) { return o.id == id; });
+                    if (sensorIndex >= 0) {
+                        vm.sensors[sensorIndex].temprature = temprature;
+                    } else {
+                        console.log("Not found : " + id);
+                    }
+
+                });
+            },
+            methods: {}
+        });
     </script>
 
 }

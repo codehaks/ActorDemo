@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Orleans;
+using WebApp.Hubs;
 
 namespace WebApp
 {
@@ -18,6 +20,22 @@ namespace WebApp
         {
             services.AddControllers();
             services.AddRazorPages();
+            services.AddSignalR();
+            
+            //var client = new Orleans.ClientBuilder()
+            //    .UseSignalR()
+            //    .UseLocalhostClustering()
+            //    .Build();
+
+
+
+            //client.Connect();
+
+            //services
+            //    .AddSingleton<Orleans.IClusterClient>(client)
+            //    .AddSignalR()
+            //    .AddOrleans();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +50,7 @@ namespace WebApp
             app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<NotifyHub>("/notifyhub");
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });

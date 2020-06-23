@@ -27,6 +27,8 @@ namespace WebApp
                 {
                     siloBuilder
                     .UseLocalhostClustering()
+                    //.UseSignalR().AddMemoryGrainStorage("PubSubStore")
+                    
                     //.AddAdoNetGrainStorage("messageStore", options =>
                     //{
                     //    options.Invariant = "System.Data.SqlClient";
